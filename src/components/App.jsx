@@ -1,6 +1,7 @@
 // src/App.jsx
 import Product from './Product';
-import BookList  from './BookList';
+import BookList from './BookList';
+import { Alert } from "./Alert";
 
 const favouriteBooks = [
   { id: "id-1", name: "JS for beginners" },
@@ -12,6 +13,21 @@ const favouriteBooks = [
 export default function App() {
   return (
     <div>
+      <h2>Alerts</h2>
+
+      <Alert variant="info">
+        Would you like to browse our recommended products?
+      </Alert>
+      <Alert variant="error">
+        There was an error during your last transaction
+      </Alert>
+      <Alert variant="success">
+        Payment received, thank you for your purchase
+      </Alert>
+      <Alert variant="warning">
+        Please update your profile contact information
+      </Alert>
+    
       <h1>Best selling</h1>
     <h2>Books</h2>
       <BookList books={favouriteBooks} />
