@@ -2,6 +2,7 @@
 import Product from './Product';
 import BookList from './BookList';
 import { Alert } from "./Alert";
+import UserMenu from './UserMenu';
 
 const favouriteBooks = [
   { id: "id-1", name: "JS for beginners" },
@@ -13,6 +14,9 @@ const favouriteBooks = [
 export default function App() {
   return (
     <div>
+      <h2>User icon</h2>
+      <UserMenu name="User Name" />
+      
       <h2>Alerts</h2>
 
       <Alert variant="info">
