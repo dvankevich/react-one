@@ -4,6 +4,8 @@ import Product from './Product';
 import BookList from './BookList';
 import { Alert } from "./Alert";
 import UserMenu from './UserMenu';
+import { ClickCounter } from './ClickCounter';
+import { ClickCounterDeep } from './ClickCounterDeep';
 
 
 const favouriteBooks = [
@@ -27,21 +29,74 @@ export default function App() {
     alert("I'm a button! See console log.");
   };
   
-  // let clicks = 0;
-  const [ clicks, setClicks ] = useState(10);
+  const [clicks, setClicks] = useState(10);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClickR = () => {
     //clicks = clicks + 1;
     setClicks(clicks + 1);
   };
 
+    const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const [clicksDeep, setClicksDeep] = useState(0);
+
+	// Функція, яку будемо передавати в ClickCounterDeep
+	// для виклику під час кліку
+	const handleClickDeep = () => {
+    setClicksDeep(clicksDeep + 1);
+  };
+
+  const [values, setValues] = useState({
+    x: 0,
+    y: 0,
+	  });
+	
+	const updateX = () => {
+			setValues({
+			...values,
+			x: values.x + 1
+		});
+	};
+
+	const updateY = () => {
+		setValues({
+			...values,
+			y: values.y + 1
+		});
+	};
+
   return (
     <div>
       <div>
+        <h2>objects update</h2>
+          <p>
+             x: {values.x}, y: {values.y}
+          </p>
+
+           <button onClick={updateX}>Update x</button>
+           <button onClick={updateY}>Update y</button>
+        </div>
+      <div>
+        <h2>raising states</h2>
+        <ClickCounterDeep value={clicksDeep} onUpdate={handleClickDeep} />
+			  <ClickCounterDeep value={clicksDeep} onUpdate={handleClickDeep} />
+      </div>
+      <div>
+        <h2>states isolation</h2>
+        <ClickCounter />
+			  <ClickCounter />
+      </div>
+      <div>
+        <h2>States</h2>
+        <button onClick={handleToggle}>{isOpen ? "Hide" : "Show"}</button>
+        {isOpen && <p>Now you can see me!</p>}
+      </div>
+      <div>
         <h2>reactive</h2>
-
         <button onClick={handleClickR}>Current: {clicks}</button>
-
       </div>
       <div>
         <h2>reading props</h2>
