@@ -6,6 +6,7 @@ import { Alert } from "./Alert";
 import UserMenu from './UserMenu';
 import { ClickCounter } from './ClickCounter';
 import { ClickCounterDeep } from './ClickCounterDeep';
+import NewComponent from './NewComponent';
 
 
 const favouriteBooks = [
@@ -71,6 +72,7 @@ export default function App() {
   return (
     <div>
       <div>
+        <NewComponent/>
         <h2>objects update</h2>
           <p>
              x: {values.x}, y: {values.y}
